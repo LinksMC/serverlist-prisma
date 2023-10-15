@@ -106,6 +106,7 @@ model MinecraftServerAuthRequest {
   id        String   @id @default(uuid())
   ip        String
   port      Int
+  token     String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   User      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
