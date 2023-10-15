@@ -65,6 +65,8 @@ model MinecraftServer {
   name      String
   outline   String
   avatar    String
+  ip        String
+  port      Int
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
