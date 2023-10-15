@@ -40,14 +40,16 @@ model Session {
 }
 
 model User {
-  id                String             @id @default(cuid())
-  name              String?
-  email             String?            @unique
-  emailVerified     DateTime?
-  image             String?
-  accounts          Account[]
-  sessions          Session[]
-  minecraftAccounts MinecraftAccount[]
+  id                          String                       @id @default(cuid())
+  name                        String?
+  email                       String?                      @unique
+  emailVerified               DateTime?
+  image                       String?
+  accounts                    Account[]
+  sessions                    Session[]
+  minecraftAccounts           MinecraftAccount[]
+  minecraftServers            MinecraftServer[]
+  minecraftServerAuthRequests MinecraftServerAuthRequest[]
 }
 
 model VerificationToken {
@@ -69,6 +71,8 @@ model MinecraftServer {
   port      Int
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
+  User      User?    @relation(fields: [userId], references: [id])
+  userId    String?
 
   @@map("minecraft_server")
 }
@@ -96,4 +100,16 @@ model MinecraftAccount {
   userId    String   @map("user_id")
 
   @@unique([edition, mcid])
+}
+
+model MinecraftServerAuthRequest {
+  id        String   @id @default(uuid())
+  ip        String
+  port      Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  User      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String   @map("user_id")
+
+  @@unique([ip, port])
 }
