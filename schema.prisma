@@ -69,10 +69,11 @@ model MinecraftServer {
   avatar    String
   ip        String
   port      Int
+  published Boolean  @default(false)
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
-  User      User?    @relation(fields: [userId], references: [id])
-  userId    String?
+  Owner     User?    @relation(fields: [ownerId], references: [id])
+  ownerId   String?
 
   @@map("minecraft_server")
 }
