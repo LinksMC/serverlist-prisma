@@ -64,9 +64,9 @@ model VerificationToken {
 
 model MinecraftServer {
   id        Int      @id @default(autoincrement())
-  name      String
-  outline   String
-  avatar    String
+  name      String   @default("")
+  outline   String   @default("")
+  avatar    String   @default("")
   ip        String
   port      Int
   published Boolean  @default(false)
