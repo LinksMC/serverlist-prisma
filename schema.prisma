@@ -70,6 +70,7 @@ model MinecraftServer {
   ip        String
   port      Int
   published Boolean  @default(false)
+  showIP    Boolean  @default(true) @map("show_ip")
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
   Owner     User?    @relation(fields: [ownerId], references: [id])
