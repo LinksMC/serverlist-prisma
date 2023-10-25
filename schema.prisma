@@ -65,7 +65,7 @@ model VerificationToken {
 model MinecraftServer {
   id        String   @id @default(uuid())
   name      String   @default("名前を設定してください")
-  outline   String   @default("")
+  outline   String   @default("概要を入力してください")
   avatar    String   @default("")
   ip        String
   port      Int
