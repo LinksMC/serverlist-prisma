@@ -63,7 +63,7 @@ model VerificationToken {
 // models for others
 
 model MinecraftServer {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(uuid())
   name      String   @default("名前を設定してください")
   outline   String   @default("")
   avatar    String   @default("")
