@@ -63,18 +63,19 @@ model VerificationToken {
 // models for others
 
 model MinecraftServer {
-  id        String   @id @default(uuid())
-  name      String   @default("名前を設定してください")
-  outline   String   @default("概要を入力してください")
-  avatar    String   @default("")
-  ip        String
-  port      Int
-  published Boolean  @default(false)
-  showIP    Boolean  @default(true) @map("show_ip")
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
-  Owner     User?    @relation(fields: [ownerId], references: [id])
-  ownerId   String?
+  id          String   @id @default(uuid())
+  name        String   @default("名前を設定してください")
+  outline     String   @default("概要を入力してください")
+  avatar      String   @default("")
+  ip          String
+  port        Int
+  description String   @default("説明を入力してください")
+  published   Boolean  @default(false)
+  showIP      Boolean  @default(true) @map("show_ip")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  Owner       User?    @relation(fields: [ownerId], references: [id])
+  ownerId     String?
 
   @@map("minecraft_server")
 }
