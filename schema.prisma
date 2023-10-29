@@ -115,5 +115,5 @@ model MinecraftServerAuthRequest {
   User      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId    String   @map("user_id")
 
-  @@unique([ip, port])
+  @@unique([id])
 }
