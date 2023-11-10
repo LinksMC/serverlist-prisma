@@ -114,6 +114,4 @@ model MinecraftServerAuthRequest {
   updatedAt DateTime @updatedAt
   User      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId    String   @map("user_id")
-
-  @@unique([id])
 }
